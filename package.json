@@ -1,0 +1,34 @@
+{
+  "name": "microservice",
+  "version": "1.0.0",
+  "description": "Microservice template",
+  "main": "index.js",
+  "scripts": {
+    "start": "knex migrate:latest && node index.js",
+    "test": "knex migrate:latest --env test && mocha tests --recursive --timeout 10000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/operatorIO/microservice.git"
+  },
+  "author": "Cezar Grigore",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/operatorIO/microservice/issues"
+  },
+  "homepage": "https://github.com/operatorIO/microservice#readme",
+  "dependencies": {
+    "axios": "^0.16.2",
+    "body-parser": "^1.18.2",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.1",
+    "express-async-errors": "^2.0.0",
+    "knex": "^0.13.0",
+    "mysql": "^2.14.1"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
+    "mocha": "^4.0.0"
+  }
+}
