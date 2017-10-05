@@ -1,9 +1,14 @@
-const chai = require('chai')
+const chai = require('chai');
+const chaiAsPromised = require('chai-as-promised');
 const chaiHttp = require('chai-http');
 const app = require('./../../index.js');
 const breeds = require('./../data/breeds');
 const expect = chai.expect;
+const expect = chai.expect;
+const should = chai.should;
 
+chai.use(chaiAsPromised);
+chai.use(should);
 chai.use(chaiHttp);
 
 describe('users module', () => {
@@ -33,5 +38,13 @@ describe('users module', () => {
       expect(res.body.success).to.equal('false');
       done();
     });
+  });
+
+  it(`should throw a validation exception`, async () => {
+    return services.createUser(users.correct_user.name, users.correct_user.email, '123')
+      .should.be.rejectedWith(
+        errors.ValidationError, 
+        'The password provided has to be between 8 and 32 characters.'
+      );
   });
 });
